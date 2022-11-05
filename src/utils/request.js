@@ -1,5 +1,5 @@
 import axios from 'axios';
-import * as $lance from '@/utils/lance';
+import lance from '@/utils/lance';
 import { Toast } from 'vant';
 
 // 创建请求实例
@@ -17,7 +17,7 @@ instance.interceptors.request.use(
     /**
      * 在这里一般会携带前台的参数发送给后台，比如下面这段代码：
      */
-    const token = $lance.getJson('token');
+    const token = lance.getJson('token');
     if (token) {
       // let each request carry token
       config.headers = {

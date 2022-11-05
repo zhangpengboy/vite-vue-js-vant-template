@@ -39,7 +39,7 @@
 
 <script setup>
 import { useI18n } from 'vue-i18n';
-
+import User from '@/api/user'
 const { t } = useI18n();
 const title = t('msg.a2');
 const username = ref('');
@@ -48,6 +48,11 @@ const checked = ref(false);
 const isEye = ref(false);
 const onSubmit = (values) => {
   console.log('submit', values);
+  User.login(username.value, password.value).then(res => {
+    if (res.code === 200) {
+      console.log(res)
+    }
+  })
 };
 </script>
 <style scoped>

@@ -6,7 +6,7 @@
 
 const prefix = 'awl-';
 
-export default {
+const lance = {
   // 设置String: JSON数据缓存
   setJson(key, value) {
     const jsonString = JSON.stringify(value);
@@ -108,3 +108,4 @@ export default {
     return `****${v.slice(-4)}`;
   },
 };
+export default lance
