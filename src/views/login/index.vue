@@ -3,6 +3,8 @@
   <div class="login">
     <header>
       <img alt="Vue logo" class="logo" src="@/assets/logo.svg" />
+      <h2>{{ title }}</h2>
+      <p>{{ $t('msg.a3') }}</p>
     </header>
     <van-form @submit="onSubmit">
       <van-cell-group inset>
@@ -39,7 +41,7 @@
 import { useI18n } from 'vue-i18n';
 
 const { t } = useI18n();
-const title = t('msg.a1');
+const title = t('msg.a2');
 const username = ref('');
 const password = ref('');
 const checked = ref(false);
@@ -50,7 +52,9 @@ const onSubmit = (values) => {
 </script>
 <style scoped>
 .login {
+  background: #fff;
   padding: 12px;
+  text-align: center;
 }
 .logo {
   display: block;
