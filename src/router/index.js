@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 import demoRouters from './modules/demo';
+import store from '@/store';
 
 const routes = [...demoRouters];
 
@@ -14,6 +15,19 @@ const router = createRouter({
       behavior: 'smooth',
     };
   },
+});
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.noAuth) {
+    next();
+  } else {
+    console.log(store.state.hasLogin)
+    if (!store.state.hasLogin) {
+      next('/login');
+      return false;
+    }
+    next();
+  }
 });
 
 export default router;

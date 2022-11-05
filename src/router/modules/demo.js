@@ -1,12 +1,26 @@
 export default [
   {
+    name: 'notFound',
     path: '/',
-    name: 'home',
-    component: () => import('@/views/HomeView.vue'),
+    redirect: {
+      name: 'home',
+    },
   },
   {
-    path: '/pinia',
-    name: 'pinia',
-    component: () => import('@/views/PiniaView.vue'),
+    path: '/home',
+    name: 'home',
+    component: () => import('@/views/home/index.vue'),
+  },
+  {
+    path: '/login',
+    name: 'login',
+    meta: { title: '登录', noAuth: true },
+    component: () => import('@/views/login/index.vue'),
+  },
+  {
+    name: 'forgetPwd',
+    path: '/forgetPwd',
+    meta: { title: '忘记密码', noAuth: true },
+    component: () => import('@/views/login/forgetPwd.vue'),
   },
 ];

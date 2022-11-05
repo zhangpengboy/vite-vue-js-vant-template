@@ -1,4 +1,6 @@
 import axios from 'axios';
+import * as $lance from '@/utils/lance';
+import { Toast } from 'vant';
 
 // 创建请求实例
 const instance = axios.create({
@@ -14,11 +16,15 @@ instance.interceptors.request.use(
   (config) => {
     /**
      * 在这里一般会携带前台的参数发送给后台，比如下面这段代码：
-     * const token = getToken()
-     * if (token) {
-     *  config.headers.token = token
-     * }
      */
+    const token = $lance.getJson('token');
+    if (token) {
+      // let each request carry token
+      config.headers = {
+        ...config.headers,
+        Authorization: `Bearer ${token}`,
+      };
+    }
     return config;
   },
   (error) => {
@@ -31,9 +37,21 @@ instance.interceptors.response.use(
   (response) => {
     /**
      * 根据你的项目实际情况来对 response 和 error 做处理
-     * 这里对 response 和 error 不做任何处理，直接返回
      */
-    return response;
+    const res = response.data;
+    console.log('res', res);
+
+    // if the custom code is not 200, it is judged as an error.
+    if (res.code !== 200) {
+      Toast(res.msg);
+      // 412: Token expired;
+      if (res.code === 412) {
+        store.dispatch('user/userLogout');
+      }
+      return Promise.reject(res.msg || 'Error');
+    } else {
+      return res;
+    }
   },
   (error) => {
     const { response } = error;
