@@ -110,9 +110,7 @@ npm run dev
 ```bash
 ## 构建正式环境
 npm run build
-```
 
-```bash
 ## 构建测试环境
 npm run build:test
 ```

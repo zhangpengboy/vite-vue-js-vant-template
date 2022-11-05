@@ -109,9 +109,8 @@ npm run dev
 ```bash
 ## build
 npm run build
-```
 
-```bash
 ## build test
 npm run build:test
-`
+```
+
