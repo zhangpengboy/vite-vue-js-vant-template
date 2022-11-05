@@ -108,12 +108,11 @@ npm run dev
 ### 构建
 
 ```bash
-## 构建
+## 构建正式环境
 npm run build
 ```
 
-## 开源协议
-
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2022 ElanYoung
+```bash
+## 构建测试环境
+npm run build:test
+```

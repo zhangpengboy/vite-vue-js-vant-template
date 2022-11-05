@@ -110,3 +110,8 @@ npm run dev
 ## build
 npm run build
 ```
+
+```bash
+## build test
+npm run build:test
+`
