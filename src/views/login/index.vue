@@ -48,7 +48,7 @@ const checked = ref(false);
 const isEye = ref(false);
 const onSubmit = (values) => {
   console.log('submit', values);
-  User.login(username.value, password.value).then(res => {
+  User.login({username: username.value, password: password.value}).then(res => {
     if (res.code === 200) {
       console.log(res)
     }

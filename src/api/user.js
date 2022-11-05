@@ -7,10 +7,7 @@ export default class User {
    * @param {String} password 密码
    * @returns
    */
-  static async login(username, password) {
-    return post('/login', {
-      username,
-      password,
-    });
+  static async login(data) {
+    return post('/login', data);
   }
 }
